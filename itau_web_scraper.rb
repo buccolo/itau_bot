@@ -34,6 +34,7 @@ class ItauWebScraper
 
     click_on "Home"
     click_on "ver extrato"
+    select "Últimos 90 dias", from: "periodoExtrato"
 
     @payload.merge!({ extrato: parser.parse_extrato(page.html) })
   end
