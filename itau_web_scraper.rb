@@ -8,18 +8,20 @@ class ItauWebScraper
     visit "/"
 
     @payload = {}
-
     @parser = ItauWebParser.new
     @credentials = ItauWebCredentials.from_env
   end
 
   def login
+    puts "-----> Login"
+
     fill_in "campo_agencia", with: @credentials.agencia
     fill_in "campo_conta", with: @credentials.conta
     click_on "Acessar"
 
     click_on @credentials.nome
 
+    puts "-----> Password"
     @credentials.senha.chars.each do |char|
       find(".TextoTecladoVar img[title*='#{char}']").click
     end
@@ -31,16 +33,19 @@ class ItauWebScraper
 
   def extrato
     login unless @logged_in
+    puts "-----> Extrato"
 
     click_on "Home"
     click_on "ver extrato"
-    select "Últimos 90 dias", from: "periodoExtrato"
+    select "ltimos 90 dias", from: "periodoExtrato"
+    sleep 3 # required for this ^
 
     @payload.merge!({ extrato: parser.parse_extrato(page.html) })
   end
 
   def poupanca
     login unless @logged_in
+    puts "-----> Poupança"
 
     click_on "Poupança"
     click_on "30 dias"
@@ -52,6 +57,7 @@ class ItauWebScraper
 
   def cartao_credito
     login unless @logged_in
+    puts "-----> Cartão de Crédito"
 
     click_on "Cartões"
     click_on "Fatura"

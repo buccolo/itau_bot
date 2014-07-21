@@ -9,6 +9,7 @@ require_relative './itau_web_credentials'
 
 class ItauBot
   def notify
+    puts "-----> Starting ItauBot"
     payload = ItauWebScraper.new.scrape
     payload.merge!({
       success: true
@@ -19,9 +20,12 @@ class ItauBot
       message: e.message,
       backtrace: e.backtrace
     }
+
+    puts "-----> Fail: #{e.message}"
   ensure
     url = ENV['ITAU_BOT_URL']
 
+    puts "-----> Notifying: #{url}"
     HTTParty.post(url, {
       body: JSON.pretty_generate(payload)
     })
