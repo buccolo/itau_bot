@@ -1,3 +1,5 @@
+$stdout.sync = true
+
 require 'json'
 require 'httparty'
 require 'capybara/poltergeist'
@@ -26,9 +28,11 @@ class ItauBot
     url = ENV['ITAU_BOT_URL']
 
     puts "-----> Notifying: #{url}"
-    HTTParty.post(url, {
+    response = HTTParty.post(url, {
       body: JSON.pretty_generate(payload)
     })
+
+    puts "-----> Response: #{response.code}"
   end
 end
 
