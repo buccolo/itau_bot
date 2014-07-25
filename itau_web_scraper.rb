@@ -38,9 +38,9 @@ class ItauWebScraper
     click_on "Home"
     click_on "ver extrato"
     select "ltimos 90 dias", from: "periodoExtrato"
-    sleep 3 # required for this ^
+    sleep 5 # required for this ^
 
-    @payload.merge!({ extrato: parser.parse_extrato(page.html) })
+    @payload.merge!({ balance: parser.parse_extrato(page.html) })
   end
 
   def poupanca
@@ -52,7 +52,7 @@ class ItauWebScraper
     find("#poupanca1").click
     click_on "CONTINUAR"
 
-    @payload.merge!({ poupanca: parser.parse_poupanca(page.html) })
+    @payload.merge!({ savings: parser.parse_poupanca(page.html) })
   end
 
   def cartao_credito
@@ -61,9 +61,19 @@ class ItauWebScraper
 
     click_on "Cartões"
     click_on "Fatura"
-    find("img[src$='aba_nfatura_proxima_sel.jpg']").click
 
-    @payload.merge!({ cartao_credito: parser.parse_cartao_credito(page.html) })
+    find("img[src*='aba_nfatura_atual']").click
+    current_statement = parser.parse_cartao_credito(page.html)
+
+    find("img[src*='aba_nfatura_proxima']").click
+    next_statement = parser.parse_cartao_credito(page.html)
+
+    @payload.merge!({
+      credit_card: {
+        current_statement: current_statement,
+        next_statement: next_statement
+      }
+    })
   end
 
   def scrape
