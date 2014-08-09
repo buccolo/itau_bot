@@ -8,8 +8,8 @@
     "ITAU_BOT_CONTA": "01234-5",
     "ITAU_BOT_NOME": "BRUNO",
     "ITAU_BOT_SENHA": "1234",
+    "ITAU_BOT_URL": "http://requestb.in/1234 ou http://seusite.com",
     "BUILDPACK_URL": "https://github.com/ddollar/heroku-buildpack-multi.git",
-    "ITAU_BOT_URL": "http://requestb.in/1234",
     "LD_LIBRARY_PATH": "/usr/local/lib:/usr/lib:/lib:/app/vendor/phantomjs/lib",
     "PATH": "/usr/local/bin:/usr/bin:/bin:/app/vendor/phantomjs/bin"
   },
