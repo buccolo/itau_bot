@@ -35,7 +35,6 @@ class ItauWebScraper
     login unless @logged_in
     puts "-----> Extrato"
 
-    click_on "Home"
     click_on "ver extrato"
     select "ltimos 90 dias", from: "periodoExtrato"
     sleep 5 # required for this ^
@@ -78,7 +77,7 @@ class ItauWebScraper
 
   def scrape
     extrato
-    poupanca
-    cartao_credito
+    # poupanca
+    # cartao_credito
   end
 end
