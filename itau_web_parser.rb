@@ -2,7 +2,7 @@ class ItauWebParser
   def parse_extrato(page_html)
     html = Nokogiri.parse(page_html)
     trans = html.css("#buscaPesquisaOnline tr").select {|tr| tr.css(".EXTlinhaPar, .EXTlinhaImpar").count > 0}
-    final = trans.map {|tr| tr.css("td").select {|td| td.text.strip != "" }.map {|td| td.text } }
+    final = trans.map {|tr| tr.css("td").select {|td| td.text.strip != "" }.map {|td| td.text.strip } }
 
     { transactions: final }
   end
