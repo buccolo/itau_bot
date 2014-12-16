@@ -1,6 +1,8 @@
 $stdout.sync = true
 
 require 'json'
+require 'base64'
+require 'zlib'
 require 'httparty'
 require 'capybara/poltergeist'
 
