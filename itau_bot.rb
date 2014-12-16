@@ -29,10 +29,14 @@ class ItauBot
 
     puts "-----> Notifying: #{url}"
     response = HTTParty.post(url, {
-      body: JSON.pretty_generate(payload)
+      body: compact_body(JSON.generate(payload))
     })
 
     puts "-----> Response: #{response.code}"
+  end
+
+  def compact_body(payload)
+    Base64.encode64(Zlib::Deflate.deflate(payload))
   end
 end
 
