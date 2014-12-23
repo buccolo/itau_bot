@@ -12,5 +12,11 @@ describe ItauBalanceParser do
 
     expect(transactions.count).to eq 241
     expect(transactions.first).to eq expected_first_transaction
+
+    transactions.each do |transaction|
+      expect(transaction[:date]).to be
+      expect(transaction[:memo]).to be
+      expect(transaction[:value] != 0).to be true
+    end
   end
 end

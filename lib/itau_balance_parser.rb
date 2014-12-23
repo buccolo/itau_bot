@@ -4,16 +4,16 @@ class ItauBalanceParser
   def parse(page_html)
     html = Nokogiri.parse(page_html)
     trans = html.css("#buscaPesquisaOnline tr").select {|tr| tr.css(".EXTlinhaPar, .EXTlinhaImpar").count > 0}
-    table_cells = trans.map {|tr| tr.css("td").select {|td| td.text.strip != "" }.map {|td| td.text.strip } }
+    table_cells = trans.map {|tr| tr.css("td").select do |td|
+      text = td.text.strip
+      text != "" && text != " D" && text != " C"
+    end.map {|td| td.text.strip } }
 
     format_transactions(table_cells).reject {|transaction| blacklisted? transaction[:memo]}
   end
 
   def format_transactions(transactions)
     transactions.map do |transaction|
-      value = transaction[2].gsub(/[\.,]/, "").to_i
-      value = -value if transaction.last == "-"
-
       {
         date: parse_date(transaction[0]),
         memo: parse_memo(transaction[1]),
