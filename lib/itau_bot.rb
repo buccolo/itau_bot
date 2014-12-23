@@ -8,11 +8,11 @@ require 'capybara/poltergeist'
 
 require_relative './itau_web_capybara'
 require_relative './itau_web_scraper'
-require_relative './itau_web_parser'
+require_relative './itau_balance_parser'
 require_relative './itau_web_credentials'
 
 class ItauBot
-  def notify
+  def run!
     puts "-----> Starting ItauBot"
     payload = ItauWebScraper.new.scrape
     payload.merge!({
@@ -41,5 +41,3 @@ class ItauBot
     Base64.encode64(Zlib::Deflate.deflate(payload))
   end
 end
-
-ItauBot.new.notify

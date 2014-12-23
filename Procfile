@@ -1,1 +1,1 @@
-bot: bundle exec ruby itau_bot.rb
+bot: bundle exec rake itau_bot:run
