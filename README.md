@@ -1,4 +1,5 @@
-ItauBot [![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy?template=https://github.com/buccolo/itau_bot)
+ItauBot [![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy?template=https://github.com/buccolo/itau_bot) [![Codeship Status for buccolo/itau_bot](https://www.codeship.io/projects/289b1740-6dad-0132-4faa-4a08432dfa90/status)](https://www.codeship.io/projects/54260)
+
 ========
 
 Faz scrape do seu extrato, poupança e cartão de crédito.
