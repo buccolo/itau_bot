@@ -39,7 +39,7 @@ class ItauBot
   end
 
   def compact_body(payload)
-    Base64.encode64(Zlib::Deflate.deflate(payload)).tap do |payload|
+    Base64.encode64(Zlib::Deflate.deflate(payload)).tap do |_|
       puts payload
     end
   end

@@ -34,7 +34,7 @@ class ItauWebScraper
 
     click_on "ver extrato"
     select "ltimos 90 dias", from: "periodoExtrato"
-    sleep 5 # required for this ^
+    sleep 9 # required for this ^
 
     @payload.merge!({ main_account_id => ItauBalanceParser.new.parse(page.html) })
   end
