@@ -9,6 +9,7 @@ require 'capybara/poltergeist'
 require_relative './itau_web_capybara'
 require_relative './itau_web_scraper'
 require_relative './itau_balance_parser'
+require_relative './itau_savings_parser'
 require_relative './itau_web_credentials'
 
 class ItauBot
@@ -38,6 +39,8 @@ class ItauBot
   end
 
   def compact_body(payload)
-    Base64.encode64(Zlib::Deflate.deflate(payload))
+    Base64.encode64(Zlib::Deflate.deflate(payload)).tap do |payload|
+      puts payload
+    end
   end
 end

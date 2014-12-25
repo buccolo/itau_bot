@@ -39,13 +39,30 @@ class ItauWebScraper
     @payload.merge!({ main_account_id => ItauBalanceParser.new.parse(page.html) })
   end
 
+  def scrape_savings
+    login unless @logged_in
+    puts "-----> Savings"
+
+    click_on "Poupança"
+    click_on "30 dias"
+    find("#poupanca1").click
+    click_on "CONTINUAR"
+
+    @payload.merge!({ savings_account_id => ItauSavingsParser.new.parse(page.html) })
+  end
+
   def scrape
-    scrape_balance
+    scrape_balance rescue nil
+    scrape_savings rescue nil
 
     @payload
   end
 
   def main_account_id
     ENV['GRANAIO_ITAU_MAIN_ACCOUNT'] || 'balance'
+  end
+
+  def savings_account_id
+    ENV['GRANAIO_ITAU_SAVINGS_ACCOUNT'] || 'savings'
   end
 end
