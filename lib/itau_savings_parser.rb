@@ -24,10 +24,16 @@ class ItauSavingsParser
   end
 
   def blacklisted?(memo)
-    [
+    final = [
       "S A L D O",
-      "SALDO ANTERIOR"
-    ].include? memo
+      "SALDO ANTERIOR",
+      "TRANSF SALDO BASE DIA 01"
+    ]
+
+    # TRANSF SALDO BASE DIA 01 -> 31
+    30.times { final << final.last.next }
+
+    final.include? memo
   end
 
   def parse_value(text)
