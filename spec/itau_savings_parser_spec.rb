@@ -4,14 +4,16 @@ describe ItauSavingsParser do
   it 'returns all the transactions in the right format' do
     transactions = subject.parse(itau_savings_html)
 
+    date = (DateTime.now - 1.month)
     expected_first_transaction = {
-      date: "2014-11-27",
+      date: "#{date.year}-#{date.month}-27",
       memo: "TBI 1234.54321-1",
       value: -150000
     }
 
+    date = DateTime.now
     expected_last_transaction = {
-      date: "2014-12-24",
+      date: "#{date.year}-#{date.month}-24",
       memo: "TBI 1111.22222-7",
       value: -150000
     }
