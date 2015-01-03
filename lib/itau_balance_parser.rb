@@ -9,7 +9,21 @@ class ItauBalanceParser
       text != "" && text != " D" && text != " C"
     end.map {|td| td.text.strip } }
 
-    format_transactions(table_cells).reject {|transaction| blacklisted? transaction[:memo]}
+    fix_year_leaps(format_transactions(table_cells).reject {|transaction| blacklisted? transaction[:memo]})
+  end
+
+  def fix_year_leaps(transactions)
+    last_year = (DateTime.now - 1.year).year.to_s
+    current_year = DateTime.now.year.to_s
+
+    current_month = DateTime.parse(transactions.last[:date]).month
+    transactions.reverse.each do |tx|
+      if (tx_month = DateTime.parse(tx[:date]).month) <= current_month
+        current_month = tx_month
+      else
+        tx[:date].gsub! current_year, last_year
+      end
+    end.reverse
   end
 
   def format_transactions(transactions)
@@ -35,11 +49,7 @@ class ItauBalanceParser
   def parse_date(text)
     day, month = text.split("/")
 
-    "#{year(month)}-#{month}-#{day}"
-  end
-
-  def year(month)
-    "2014" # fix this in 2015 :)
+    "#{DateTime.now.year}-#{month}-#{day}"
   end
 
   def blacklisted?(memo)

@@ -10,8 +10,15 @@ describe ItauBalanceParser do
       value: -3206
     }
 
+    expected_last_transaction = {
+      date: "2015-01-02",
+      memo: "TBI .-1/500",
+      value: 100000
+    }
+
     expect(transactions.count).to eq 241
     expect(transactions.first).to eq expected_first_transaction
+    expect(transactions.last).to eq expected_last_transaction
 
     transactions.each do |transaction|
       expect(transaction[:date]).to be
