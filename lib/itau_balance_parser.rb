@@ -51,7 +51,8 @@ class ItauBalanceParser
       "S A L D O",
       "SALDO DO DIA",
       "REND PAGO APLIC AUT APR",
-      "SALDO ANTERIOR"
+      "SALDO ANTERIOR",
+      "TRANSFERENCIA SALDO"
     ].include? memo
   end
 end
