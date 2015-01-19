@@ -41,9 +41,13 @@ class ItauBalanceParser
   end
 
   def parse_value(transaction)
-    value = transaction[2].gsub(/[\.,]/, "").to_i
-    value = -value if transaction.last == "-"
-    value
+    if transaction.last == "-"
+      # ["02/01", "RSHOP-ANTONIO LIS-02/01", "43,10", "-"]
+      - transaction[-2].gsub(/[\.,]/, "").to_i
+    else
+      # ["02/01", "TBI .-1/500", "200,00"]
+      transaction.last.gsub(/[\.,]/, "").to_i
+    end
   end
 
   def parse_date(text)

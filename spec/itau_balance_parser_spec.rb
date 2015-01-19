@@ -5,18 +5,18 @@ describe ItauBalanceParser do
     transactions = subject.parse(itau_balance_html)
 
     expected_first_transaction = {
-      date: "2014-09-24",
-      memo: "RSHOP-SANTA  PIZZ-23/09",
-      value: -3206
+      :date => "2015-01-02",
+      :memo => "RSHOP-ANTONIO LIS-02/01",
+      :value => -4310,
     }
 
     expected_last_transaction = {
-      date: "2015-01-02",
-      memo: "TBI .-1/500",
-      value: 100000
+      date: "2015-01-19",
+      memo: "RSHOP-NAZARENO RO-19/01",
+      value: -7200
     }
 
-    expect(transactions.count).to eq 241
+    expect(transactions.count).to eq 63
     expect(transactions.first).to eq expected_first_transaction
     expect(transactions.last).to eq expected_last_transaction
 
