@@ -1,7 +1,7 @@
 # ItauBot 
 Extraia suas informações financeiras das garras do Itaú!
 
-Você roda o bot com seus dados de acesso, ele extrai as informações de extrato, poupança e envia essas informações para uma Url.
+Você roda o bot com seus dados de acesso, ele extrai as informações de extrato, poupança e envia essas informações para uma URL.
 
 ## Uso
 
@@ -13,7 +13,7 @@ Você roda o bot com seus dados de acesso, ele extrai as informações de extrat
 | `ITAU_BOT_CONTA`      | Número da conta e digito, com hífen | 
 | `ITAU_BOT_NOME`       | Nome que aparece antes de digitar senha eletrônica |
 | `ITAU_BOT_SENHA`      | Senha eletrônica |
-| `ITAU_BOT_URL`        | Url para qual o ItauBot mandará as informações |
+| `ITAU_BOT_URL`        | URL para qual o ItauBot mandará as informações |
 
 ### Rodando o ItauBot
 
@@ -56,9 +56,9 @@ itau_bot_response[:savings].each do |transactions|
 end
 ```
 
-## Porque postar para uma url?
+## Porque postar para uma URL?
 Estou fazendo o [Grana.io](https://grana.io), um serviço pra gerenciar minhas finanças automagicamente. Quer ser [beta tester?](mailto:bruno.buccolo+grana@gmail.com?subject=BETA&body=seu@email.com)
-![](http://cl.ly/image/0q0i3l3g252n/Screen%20Shot%202015-02-05%20at%2011.50.06%20PM.png)
+![](http://cl.ly/image/3w2v1i1M463a/687474703a2f2f636c2e6c792f696d6167652f30713069336c33673235326e2f53637265656e25323053686f74253230323031352d30322d3035253230617425323031312e35302e3036253230504d2e706e67.png)
 
 ## Cuidado: Heroku e servidores fora do Brasil
 Minha conta foi [bloqueada (408X)](http://www.reclameaqui.com.br/3034313/banco-itau-s-a/conta-bloqueada-codigo-408/) quando comecei a usar o ItauBot no Heroku. Presumo que qualquer servidor fora do país gere o mesmo problema. Para atualizar minhas finanças agora rodo apenas do meu próprio notebook em casa.
