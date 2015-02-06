@@ -57,10 +57,11 @@ end
 ```
 
 ## Porque postar para uma url?
-Estou fazendo o [Grana.io](https://grana.io), um serviço pra gerenciar minhas finanças automagicamente.
+Estou fazendo o [Grana.io](https://grana.io), um serviço pra gerenciar minhas finanças automagicamente. Quer ser [beta tester?](mailto:bruno.buccolo+grana@gmail.com?subject=BETA&body=seu@email.com)
+![](http://cl.ly/image/0q0i3l3g252n/Screen%20Shot%202015-02-05%20at%2011.50.06%20PM.png)
 
 ## Cuidado: Heroku e servidores fora do Brasil
-Minha conta foi [bloqueada (408X)](http://www.reclameaqui.com.br/3034313/banco-itau-s-a/conta-bloqueada-codigo-408/) quando comecei a usar o ItauBot no Heroku. Presumo que quaqluer servidor fora do país gere o mesmo problema. Para atualizar minhas finanças agora rodo apenas do meu próprio notebook em casa.
+Minha conta foi [bloqueada (408X)](http://www.reclameaqui.com.br/3034313/banco-itau-s-a/conta-bloqueada-codigo-408/) quando comecei a usar o ItauBot no Heroku. Presumo que qualquer servidor fora do país gere o mesmo problema. Para atualizar minhas finanças agora rodo apenas do meu próprio notebook em casa.
 
 ## LICENSE
 
